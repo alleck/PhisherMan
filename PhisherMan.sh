@@ -3,7 +3,7 @@ exiqgrep -i > /var/log/phishedsites.log
 while read line
 do
 
-check1=$(exim -Mvb $line | grep -i -E "E-ZPass|PayPal|USPS|firstbanknigeria|1stbanknigeria-online|chasebankonline|Yahoo Password|Hotmail Password|Google Password|capitalone|zenithbank|National Westminster|Royal Bank|Santander Online Banking")
+check1=$(exim -Mvb $line | grep -i -E "E-ZPass|PayPal|USPS|firstbanknigeria|1stbanknigeria-online|chasebankonline|Yahoo Password|Hotmail Password|Google Password|capitalone|zenithbank|National Westminster|Royal Bank|Santander Online Banking|WEBMAIL Accounts")
 
 if [[ -n $check1 ]]
 then
