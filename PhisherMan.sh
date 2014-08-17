@@ -8,6 +8,7 @@ check1=$(exim -Mvb $line | grep -i -E "E-ZPass|PayPal|USPS|firstbanknigeria|1stb
 if [[ -n $check1 ]]
 then
 exim -Mf "$line" > /var/log/phishedsitesjob.log
+example="$line"
 fi
 
 done < /var/log/phishedsites.log
@@ -24,7 +25,7 @@ done < /var/log/phishedsitessort.log
 
 if [[ -n $check2 ]]
 then
-echo "Phishies were found on $(hostname)! The messages have been frozen in the queue" | mail -s "Phishies found on $(hostname)!" support@hostek.com
+echo "Phishies were found on $(hostname)! The messages have been frozen in the queue. Example ticket: $example" | mail -s "Phishies found on $(hostname)!" support@hostek.com
 fi
 
 rm -f /var/log/phishedsitessort.log
